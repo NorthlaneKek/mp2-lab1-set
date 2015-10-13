@@ -56,6 +56,7 @@ void TBitField::SetBit(const int n) // установить бит
 	pMem[Ind] = pMem[Ind]|mask;
 }
 
+
 void TBitField::ClrBit(const int n) // очистить бит
 {
 	int Ind = GetMemIndex(n);
@@ -84,14 +85,13 @@ TBitField& TBitField::operator=(const TBitField &bf) // присваивание
 int TBitField::operator==(const TBitField &bf) const // сравнение
 {
 	int tmp = 0;
-	if ((BitLen == bf.BitLen) & (MemLen == bf.BitLen))
-	{
+	if ((BitLen == bf.BitLen) & (MemLen == bf.MemLen))
+	
 		for (int i; i < MemLen; i++)
 		{
-			if ((pMem[i] == bf.pMem[i])
+			if ((pMem[i] == bf.pMem[i]))
 				tmp = tmp + i;
 			else tmp = 0;
-			break;
 		}
 	else tmp = 0;
 	tmp = tmp / MemLen;
@@ -102,13 +102,16 @@ int TBitField::operator!=(const TBitField &bf) const // сравнение
 {
 	int tmp = 0;
 	if ((BitLen != bf.BitLen) & (MemLen != bf.BitLen))
-	{
+	
 		for (int i; i < MemLen; i++)
 		{
-			if ((pMem[i] != bf.pMem[i])
+			if (pMem[i] != bf.pMem[i])
 				tmp = tmp + i;
-			else tmp = 0;
-			break;
+			else 
+			{
+				tmp = 0;
+			    break;
+			}
 		}
 	else tmp = 0;
 	tmp = tmp / MemLen;
@@ -145,7 +148,7 @@ istream &operator>>(istream &istr, TBitField &bf) // ввод
 {
 	int i=0;
 	char ch;
-	do (istr>>ch) while (ch!=' ');
+	do {istr>>ch;} while (ch!=' ');
 	while (1)
 	{
 		istr>>ch;
