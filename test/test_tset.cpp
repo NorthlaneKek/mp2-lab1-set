@@ -295,3 +295,29 @@ TEST(TSet, check_negation_operator)
 
   EXPECT_EQ(expSet, set1);
 }
+TEST(TSet, triple_one_string_or)
+{
+	const int size = 4;
+	TSet set1(size), set2(size), set3(size), tmp(size), expSet(size);
+	set1.InsElem(1);
+	set2.InsElem(2);
+	set3.InsElem(3);
+	expSet = set1 + set2;
+	expSet = expSet + set3;
+	tmp = set1 + set2 + set3;
+
+	EXPECT_EQ(expSet, tmp);
+}
+TEST(TSet, triple_one_string_and)
+{
+	const int size = 4;
+	TSet set1(size), set2(size), set3(size), tmp(size), expSet(size);
+	set1.InsElem(2);
+	set2.InsElem(2);
+	set3.InsElem(2);
+	expSet = set1 * set2;
+	expSet = expSet * set3;
+	tmp = set1*set2*set3;
+
+	EXPECT_EQ(expSet, tmp);
+}
