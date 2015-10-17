@@ -295,6 +295,7 @@ TEST(TSet, check_negation_operator)
 
   EXPECT_EQ(expSet, set1);
 }
+
 TEST(TSet, triple_one_string_or)
 {
 	const int size = 4;
@@ -308,6 +309,7 @@ TEST(TSet, triple_one_string_or)
 
 	EXPECT_EQ(expSet, tmp);
 }
+
 TEST(TSet, triple_one_string_and)
 {
 	const int size = 4;
